@@ -1,5 +1,6 @@
 package com.example;
 
+import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
@@ -16,13 +17,13 @@ public class HelloWorldServer {
         final AtomicInteger count = new AtomicInteger(1);
         final Undertow server = Undertow.builder()
                 .addHttpListener(8080, "172.31.26.50")
-                .setHandler(new HttpHandler() {
+                .setHandler(Handlers.path().addExactPath("/", new HttpHandler() {
                     @Override
                     public void handleRequest(final HttpServerExchange exchange) throws Exception {
                         exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/html");
                         exchange.getResponseSender().send("<h1>Hello redcurrent!</h1><h3>Visitor Count: " + count.getAndIncrement() + "</h3>");
                     }
-                }).build();
+                })).build();
         server.start();
     }
 
