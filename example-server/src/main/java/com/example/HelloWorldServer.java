@@ -8,7 +8,6 @@ import io.undertow.util.Headers;
 /**
  *  * @author Stuart Douglas
  *   */
-@UndertowExample("Hello World")
 public class HelloWorldServer {
 
     public static void main(final String[] args) {
