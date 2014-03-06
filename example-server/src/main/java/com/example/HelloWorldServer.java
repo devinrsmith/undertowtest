@@ -20,7 +20,7 @@ public class HelloWorldServer {
                     @Override
                     public void handleRequest(final HttpServerExchange exchange) throws Exception {
                         exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/html");
-                        exchange.getResponseSender().send("<h2>Hello redcurrent!</h2><h1>Visitor Count: " + count.getAndIncrement() + "</h1>");
+                        exchange.getResponseSender().send("<h1>Hello redcurrent!</h1><h3>Visitor Count: " + count.getAndIncrement() + "</h3>");
                     }
                 }).build();
         server.start();
