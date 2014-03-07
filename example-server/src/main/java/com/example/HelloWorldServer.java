@@ -16,7 +16,7 @@ public class HelloWorldServer {
     public static void main(final String[] args) {
         final AtomicInteger count = new AtomicInteger(1);
         final Undertow server = Undertow.builder()
-                .addHttpListener(8080, "172.31.26.50")
+	    .addHttpListener(Integer.parseInt(args[1]), args[0])
                 .setHandler(Handlers.path().addExactPath("/", new HttpHandler() {
                     @Override
                     public void handleRequest(final HttpServerExchange exchange) throws Exception {
